@@ -28,12 +28,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(moveLeftKey))
         {
             moveInput = -1f;
-            spriteRenderer.flipX = true; // Flip sprite to face left
+            spriteRenderer.flipX = false; // Flip sprite to face left
         }
         if (Input.GetKey(moveRightKey))
         {
             moveInput = 1f;
-            spriteRenderer.flipX = false; // Flip sprite to face right
+            spriteRenderer.flipX = true; // Flip sprite to face right
         }
 
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
