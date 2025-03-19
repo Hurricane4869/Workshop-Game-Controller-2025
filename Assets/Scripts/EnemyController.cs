@@ -11,8 +11,13 @@ public class EnemyController : MonoBehaviour
     public Transform attackTarget;
 
     [Header("Configuration")]
-    [SerializeField] private float moveSpeed = 2.5f;
+    [SerializeField] protected float moveSpeed = 2.5f;
 
+    void Start()
+    {
+        GameObject target = GameObject.FindGameObjectWithTag("Player");
+        attackTarget = target.transform;
+    }
     void Update()
     {
         Movement();
