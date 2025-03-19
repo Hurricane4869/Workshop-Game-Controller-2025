@@ -12,10 +12,17 @@ public class EnemyCookiesMan : EnemyController
     [SerializeField] private float bulletSpeed;
 
     [SerializeField] private float attackMinDistance;
+    [SerializeField] private float attackMaxDistance;
     [SerializeField] private float attackTimeMax;
 
     [SerializeField] private Vector3 shootOffset;
     private float attackTime = 0;
+    private Rigidbody2D rb;
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
     protected override void Movement()
     {
         if(attackTarget)
@@ -31,6 +38,8 @@ public class EnemyCookiesMan : EnemyController
                 {
                     graphic.flipX = false;    
                 }
+
+                FollowTarget(distance);
 
                 if(attackTime < 0)
                 {
@@ -57,5 +66,28 @@ public class EnemyCookiesMan : EnemyController
         GameObject bulletObj = Instantiate(bulletPrefab, shootPos, Quaternion.identity);
         Bullet bullet = bulletObj.GetComponent<Bullet>();
         bullet.Launch(new Vector2(direction, 0), "Player", bulletSpeed, attackPoint);
+    }
+
+    void FollowTarget(float distance)
+    {
+        if (attackTarget != null)
+        {
+            if (distance <= attackMaxDistance)
+            {
+                rb.velocity = Vector2.zero;
+            }
+            else
+            {
+                Vector2 direction = (attackTarget.position - transform.position).normalized;
+                rb.velocity = direction * moveSpeed;
+            }
+        }
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Ground"))
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        }
     }
 }
