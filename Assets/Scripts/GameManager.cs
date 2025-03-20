@@ -10,17 +10,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         isGameOver = false;
-    }
-
-    private void Update()
-    {
-        if (isGameOver)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            { 
-                RetryGame();
-            }
-        }
+        Time.timeScale = 1;
     }
 
     public static void GameOver()
@@ -31,5 +21,10 @@ public class GameManager : MonoBehaviour
     public static void RetryGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public static void backtoMainMenu()
+    {
+        SceneManager.LoadSceneAsync("MainMenu");
     }
 }

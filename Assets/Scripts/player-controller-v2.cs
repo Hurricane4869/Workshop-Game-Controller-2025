@@ -89,7 +89,7 @@ private void Jump()
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground") && collision.gameObject.CompareTag("Enemy")) // Pastikan objek bertagar "Ground"
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Enemy")) // Pastikan objek bertagar "Ground"
         {
             isGrounded = true;
             jumpCount = 2; // Reset kesempatan lompat saat menyentuh tanah
@@ -103,7 +103,7 @@ private void Jump()
 
     private void OnCollisionExit2D(Collision2D collision )
     {
-        if (collision.gameObject.CompareTag("Ground") && collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Enemy"))
         {
             isGrounded = false;
         }
