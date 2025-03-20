@@ -17,15 +17,17 @@ public class PlayerController : MonoBehaviour
 
     public float healthMax { private set; get; }
 
-    private bool isGrounded = true;
+    private bool isGrounded;
     private bool isShooting = true;
 
     [Header("Configuration")]
     [SerializeField] private float moveSpeed = 2.5f;
     [SerializeField] private float jumpForce = 5.0f;
-    [SerializeField] private float shootingTimeMax = 1.0f;
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private float shootingTimeMax = 0.1f;
+    [SerializeField] private int jumpCount = 2;
+    [SerializeField] public GameObject bulletPrefab;
     [SerializeField] private float bulletSpeed = 10;
+
 
     [SerializeField] private Vector2 gunOffset;
 
@@ -33,8 +35,6 @@ public class PlayerController : MonoBehaviour
 
 
     private Rigidbody2D rb2;
-
-    public KeyCode jumpKey = KeyCode.Space;
 
     void Awake()
     {
@@ -79,35 +79,39 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+private void Jump()
     {
-        if (collision.CompareTag("NoJump"))
+        if (Input.GetButtonDown("Jump") && jumpCount > 0)
+        {
+            rb2.velocity = new Vector2(rb2.velocity.x, jumpForce);
+            jumpCount--; // Mengurangi jumlah kesempatan lompat
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground") && collision.gameObject.CompareTag("Enemy")) // Pastikan objek bertagar "Ground"
         {
             isGrounded = true;
+            jumpCount = 2; // Reset kesempatan lompat saat menyentuh tanah
+        }
+        if (collision.collider.tag == "Enemy")
+        {
+            float damage = collision.collider.GetComponent<EnemyController>().GetAttackDamage();
+            DamagedBy(damage);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnCollisionExit2D(Collision2D collision )
     {
-        if (collision.CompareTag("NoJump"))
+        if (collision.gameObject.CompareTag("Ground") && collision.gameObject.CompareTag("Enemy"))
         {
             isGrounded = false;
         }
     }
 
-
-    private void Jump()
-    {
-        if (Input.GetKeyDown(jumpKey) && isGrounded)
-        {
-            rb2.velocity = new Vector2(rb2.velocity.x, jumpForce);
-            isGrounded = false; // Mencegah double jump
-        }
-    }
-
     void ShootController()
     {
-        isShooting = Input.GetKey(KeyCode.Z);
+        isShooting = Input.GetButton("Fire1") || Input.GetAxis("Fire1") > 0.5f;
 
         if (isShooting)
         {
@@ -137,6 +141,45 @@ public class PlayerController : MonoBehaviour
         if (bullet)
         {
             bullet.Launch(new Vector2(direction, 0), "Enemy", bulletSpeed, attack);
+        }
+    }
+
+        public void DamagedBy(float damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            health = 0;
+            Die();
+        }
+    }
+
+    void FallDie()
+    {
+        if (transform.position.y < -20)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        graphic.enabled = false;
+        canBeMoved = false;
+        GameManager.GameOver();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Bullet")
+        {
+            Bullet bullet = collision.GetComponent<Bullet>();
+            if (bullet.targetTag == "Player")
+            {
+                float damage = bullet.GetDamage();
+                DamagedBy(damage);
+                Destroy(collision.gameObject);
+            }
         }
     }
 }

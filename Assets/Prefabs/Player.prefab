@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7868287842483191768}
   - component: {fileID: 7992097976455039160}
   - component: {fileID: 8103200365279568434}
-  - component: {fileID: 2528034404020980435}
+  - component: {fileID: 7731392916249371434}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -149,7 +149,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2528034404020980435
+--- !u!114 &7731392916249371434
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,11 +158,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 6108050817688587681}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6aed649b60923e438490efe6eb5a488, type: 3}
+  m_Script: {fileID: 11500000, guid: 68b1b023b3cd1ad4e8a6181daa72be89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpForce: 7
-  moveLeftKey: 97
-  moveRightKey: 100
+  graphic: {fileID: 0}
+  health: 100
+  attack: 5
+  canBeMoved: 1
+  moveSpeed: 2.5
+  jumpForce: 5
+  shootingTimeMax: 1
+  bulletPrefab: {fileID: 1313972198665738036, guid: ce16f8ea65d16cb488e80508d3324f53, type: 3}
+  bulletSpeed: 10
+  gunOffset: {x: 0, y: 0}
   jumpKey: 32

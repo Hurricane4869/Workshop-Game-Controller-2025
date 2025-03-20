@@ -195,7 +195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoint: 20
   attackPoint: 5
-  attackTarget: {fileID: 0}
+  attackTarget: {fileID: 1838838390762422313, guid: 12ad61191aaa7d34bb3b9d5efe67a1c0, type: 3}
   moveSpeed: 2.5
   graphic: {fileID: 4097715868710508063}
   bulletPrefab: {fileID: 1313972198665738036, guid: 5b041ea2699989b43b493fa285d80b17, type: 3}
@@ -203,4 +203,4 @@ MonoBehaviour:
   attackMinDistance: 10
   attackMaxDistance: 5
   attackTimeMax: 2
-  shootOffset: {x: 1.2, y: -0.6, z: 0}
+  shootOffset: {x: 1.2, y: 0, z: 0}
