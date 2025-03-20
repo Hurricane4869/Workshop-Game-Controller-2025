@@ -2,15 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyCookiesMan : MonoBehaviour
+public class EnemyCookiesMan : EnemyController
 {
-    [Header("Status")]
-    public float healthPoint = 20f;
-    public float attackPoint = 5f;
-    public Transform attackTarget;
-
     [Header("Configuration")]
-    [SerializeField] private float moveSpeed = 2.5f;
     [SerializeField] private float attackMinDistance;
     [SerializeField] private float attackMaxDistance;
     [SerializeField] private float attackTimeMax;
@@ -43,7 +37,7 @@ public class EnemyCookiesMan : MonoBehaviour
         FallDie();
     }
 
-    private void Movement()
+    protected override void Movement()
     {
         if (attackTarget)
         {
@@ -86,16 +80,6 @@ public class EnemyCookiesMan : MonoBehaviour
         }
     }
 
-    public void DamagedBy(float damagePoint)
-    {
-        healthPoint -= damagePoint;
-        if (healthPoint <= 0)
-        {
-            healthPoint = 0;
-            Die();
-        }
-    }
-
     private void FallDie()
     {
         if (transform.position.y < -20)
@@ -114,6 +98,13 @@ public class EnemyCookiesMan : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }
 

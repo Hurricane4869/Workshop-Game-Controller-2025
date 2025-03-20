@@ -42,6 +42,7 @@ public class EnemyController : MonoBehaviour
     }
     void Die()
     {
+        
         Destroy(gameObject);
     }
     public float GetAttackDamage()

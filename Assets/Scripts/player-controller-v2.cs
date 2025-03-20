@@ -94,9 +94,9 @@ private void Jump()
             isGrounded = true;
             jumpCount = 2; // Reset kesempatan lompat saat menyentuh tanah
         }
-        if (collision.collider.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
-            float damage = collision.collider.GetComponent<EnemyController>().GetAttackDamage();
+            float damage = collision.gameObject.GetComponent<EnemyCookiesMan>().GetAttackDamage();
             DamagedBy(damage);
         }
     }
