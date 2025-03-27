@@ -6,9 +6,13 @@ public class EnemyController : MonoBehaviour
 {
     [Header("Status")]
     public float healthPoint = 20f;
+    public float enemyHealthBarFullX = 14.1f;
     public float attackPoint = 5f;
-
     public Transform attackTarget;
+    public SpriteRenderer enemyHealthBar;
+    public GameObject enemy;
+    private float initialHealth = 20f;
+
 
     [Header("Configuration")]
     [SerializeField] protected float moveSpeed = 2.5f;
@@ -29,10 +33,24 @@ public class EnemyController : MonoBehaviour
     public void DamagedBy(float damagePoint)
     {
         healthPoint -= damagePoint;
-        if(healthPoint <= 0)
+        healthPoint = Mathf.Clamp(healthPoint, 0, initialHealth);
+
+        UpdateHealthBar();
+
+        if (healthPoint <= 0)
         {
-            healthPoint = 0;
             Die();
+        }
+    }
+
+    private void UpdateHealthBar()
+    {
+        if (enemyHealthBar != null)
+        {
+            float healthPercentage = healthPoint / initialHealth;
+            Vector3 currentScale = enemyHealthBar.transform.localScale;
+            currentScale.x = healthPercentage * enemyHealthBarFullX;
+            enemyHealthBar.transform.localScale = currentScale;
         }
     }
     protected virtual void FallDie()
