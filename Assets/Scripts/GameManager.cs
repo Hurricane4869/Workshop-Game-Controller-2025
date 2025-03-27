@@ -12,10 +12,15 @@ public class GameManager : MonoBehaviour
         isGameOver = false;
         Time.timeScale = 1;
     }
+    void Start()
+    {
+        SoundManager.PlayBGM(BGMType.GAMEPLAY);
+    }
 
     public static void GameOver()
     {
         isGameOver = true;
+        SoundManager.StopBGM();
     }
 
     public static void RetryGame()
@@ -26,5 +31,6 @@ public class GameManager : MonoBehaviour
     public static void backtoMainMenu()
     {
         SceneManager.LoadSceneAsync("MainMenu");
+        SoundManager.StopBGM();
     }
 }

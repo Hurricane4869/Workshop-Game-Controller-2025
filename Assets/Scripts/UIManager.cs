@@ -34,5 +34,9 @@ public class UIManager : MonoBehaviour
             gameOverUI.SetActive(GameManager.isGameOver);
             Time.timeScale = 0;
         }
+        if (gameOverUI && !GameManager.isGameOver)
+        {
+            gameOverUI.SetActive(GameManager.isGameOver);
+        }
     }
 }

@@ -94,8 +94,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.093685366, y: -0.5043536}
-  m_Size: {x: 0.50449336, y: 1.0547233}
+  m_Offset: {x: 0.0499295, y: 0.014855623}
+  m_Size: {x: 1.3096032, y: 2.0931416}
   m_Direction: 0
 --- !u!212 &8103200365279568434
 SpriteRenderer:
@@ -168,7 +168,7 @@ MonoBehaviour:
   moveSpeed: 2.5
   jumpForce: 5
   shootingTimeMax: 1
+  jumpCount: 2
   bulletPrefab: {fileID: 1313972198665738036, guid: ce16f8ea65d16cb488e80508d3324f53, type: 3}
   bulletSpeed: 10
   gunOffset: {x: 0, y: 0}
-  jumpKey: 32

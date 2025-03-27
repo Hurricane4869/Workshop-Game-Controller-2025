@@ -142,10 +142,12 @@ private void Jump()
         {
             bullet.Launch(new Vector2(direction, 0), "Enemy", bulletSpeed, attack);
         }
+        SoundManager.PlaySound(SoundType.FIRE);
     }
 
-        public void DamagedBy(float damage)
+    public void DamagedBy(float damage)
     {
+        SoundManager.PlaySound(SoundType.PLAYERHIT);
         health -= damage;
         if (health <= 0)
         {
@@ -166,6 +168,7 @@ private void Jump()
     {
         graphic.enabled = false;
         canBeMoved = false;
+        SoundManager.PlaySound(SoundType.OPICK);
         GameManager.GameOver();
     }
 

@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &133988401
 RectTransform:
   m_ObjectHideFlags: 0
@@ -913,7 +913,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 679635708}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: backtoMainMenu
         m_Mode: 1
@@ -1282,7 +1282,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 679635708}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: RetryGame
         m_Mode: 1
@@ -4839,10 +4839,10 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1999939116}
+  - {fileID: 1287106007}
   - {fileID: 1168220615}
   - {fileID: 1659636999}
   - {fileID: 1478278554}
   - {fileID: 1926033445}
   - {fileID: 454582851}
   - {fileID: 679635709}
-  - {fileID: 1287106007}
