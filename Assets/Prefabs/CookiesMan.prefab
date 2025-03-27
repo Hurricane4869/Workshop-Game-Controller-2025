@@ -194,8 +194,8 @@ Transform:
   m_GameObject: {fileID: 4994957988549286497}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.498, z: 0}
-  m_LocalScale: {x: 14.1, y: 0.44, z: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 14.1, y: 0.44, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 520967993137738292}
@@ -279,7 +279,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.5, z: 0}
-  m_LocalScale: {x: 0.265, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.26, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 520967993137738292}
@@ -454,6 +454,7 @@ MonoBehaviour:
   attackTarget: {fileID: 1838838390762422313, guid: 12ad61191aaa7d34bb3b9d5efe67a1c0, type: 3}
   enemyHealthBar: {fileID: 5366677612875363878}
   enemy: {fileID: 7158066756857785075}
+  initialHealth: 20
   moveSpeed: 2.5
   attackMinDistance: 10
   attackMaxDistance: 5

@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour
     public Transform attackTarget;
     public SpriteRenderer enemyHealthBar;
     public GameObject enemy;
-    private float initialHealth = 20f;
+    public float initialHealth = 20f;
 
 
     [Header("Configuration")]
@@ -51,6 +51,13 @@ public class EnemyController : MonoBehaviour
             Vector3 currentScale = enemyHealthBar.transform.localScale;
             currentScale.x = healthPercentage * enemyHealthBarFullX;
             enemyHealthBar.transform.localScale = currentScale;
+
+            // Kurangi posisi X agar bergeser seiring dengan berkurangnya scale
+            Vector3 currentPosition = enemyHealthBar.transform.position;
+            float offset = (1 - healthPercentage) * enemyHealthBarFullX * 0.04f; // Atur nilai sesuai kebutuhan
+            currentPosition.x = transform.position.x - offset;
+            enemyHealthBar.transform.position = currentPosition;
+
         }
     }
     protected virtual void FallDie()
