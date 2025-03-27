@@ -35,14 +35,13 @@ public class EnemyController : MonoBehaviour
             Die();
         }
     }
-    void FallDie()
+    protected virtual void FallDie()
     {
         if(transform.position.y < -20)
             Die();
     }
-    void Die()
+    protected virtual void Die()
     {
-        
         Destroy(gameObject);
     }
     public float GetAttackDamage()

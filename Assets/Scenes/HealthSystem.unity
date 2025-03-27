@@ -1178,7 +1178,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &871098286
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1897,10 +1897,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f5521f5897bbf445892f5bd6407781c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
-  playerHealthBar: {fileID: 0}
+  scoreText: {fileID: 623961937}
+  playerHealthBar: {fileID: 508470575}
   playerHealthBarFullX: 492
-  gameOverUI: {fileID: 0}
+  gameOverUI: {fileID: 871098285}
   player: {fileID: 801973992}
 --- !u!114 &1681258106
 MonoBehaviour:
@@ -1914,7 +1914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8938d5ed7dd262c46bfc7b1e77405007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
+  scoreText: {fileID: 623961937}
 --- !u!114 &1681258107
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -28,6 +28,7 @@ public class ScoreManager : MonoBehaviour
 
     public static void AddScore(int amount)
     {
+        Debug.Log("Score added");
         currentScore += amount;
         
         if (Instance != null) 

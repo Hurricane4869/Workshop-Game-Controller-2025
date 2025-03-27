@@ -80,14 +80,15 @@ public class EnemyCookiesMan : EnemyController
         }
     }
 
-    private void FallDie()
+    protected override void FallDie()
     {
         if (transform.position.y < -20)
             Die();
     }
 
-    void Die()
+    protected override void Die()
     {
+        Debug.Log("Enemy dies");
         ScoreManager.AddScore(10); 
         Destroy(gameObject);
     }
