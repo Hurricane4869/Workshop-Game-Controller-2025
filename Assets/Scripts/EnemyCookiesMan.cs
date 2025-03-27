@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyCookiesMan : MonoBehaviour
 {
     [Header("Status")]
     public float healthPoint = 20f;
+    public float enemyHealthBarFullX = 14.1f;
     public float attackPoint = 5f;
     public Transform attackTarget;
+    public SpriteRenderer enemyHealthBar;
+    public GameObject enemy;
 
     [Header("Configuration")]
     [SerializeField] private float moveSpeed = 2.5f;
@@ -16,18 +20,20 @@ public class EnemyCookiesMan : MonoBehaviour
     [SerializeField] private float attackTimeMax;
     [SerializeField] private Vector3 shootOffset;
     private float attackTime = 0;
-    
+
     [Header("Graphics and Shooting")]
     [SerializeField] private SpriteRenderer graphic;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float bulletSpeed;
-    
+
     private Rigidbody2D rb;
-    
+    private float initialHealth;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        initialHealth = healthPoint; // Simpan nilai awal
     }
 
     void Start()
@@ -35,6 +41,9 @@ public class EnemyCookiesMan : MonoBehaviour
         GameObject target = GameObject.FindGameObjectWithTag("Player");
         if (target)
             attackTarget = target.transform;
+
+        // Health bar penuh di awal
+        UpdateHealthBar();
     }
 
     void Update()
@@ -89,10 +98,24 @@ public class EnemyCookiesMan : MonoBehaviour
     public void DamagedBy(float damagePoint)
     {
         healthPoint -= damagePoint;
+        healthPoint = Mathf.Clamp(healthPoint, 0, initialHealth);
+
+        UpdateHealthBar();
+
         if (healthPoint <= 0)
         {
-            healthPoint = 0;
             Die();
+        }
+    }
+
+    private void UpdateHealthBar()
+    {
+        if (enemyHealthBar != null)
+        {
+            float healthPercentage = healthPoint / initialHealth;
+            Vector3 currentScale = enemyHealthBar.transform.localScale;
+            currentScale.x = healthPercentage * enemyHealthBarFullX;
+            enemyHealthBar.transform.localScale = currentScale;
         }
     }
 
@@ -104,10 +127,9 @@ public class EnemyCookiesMan : MonoBehaviour
 
     void Die()
     {
-        ScoreManager.AddScore(10); 
+        ScoreManager.AddScore(10);
         Destroy(gameObject);
     }
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
