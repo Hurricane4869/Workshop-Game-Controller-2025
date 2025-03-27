@@ -72,8 +72,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d3325714f154e404684bdd23bd300ae2, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 3c45fac3ab531f4459c9eb703673d909, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -178,8 +178,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.04071325, y: 0.05181767}
-  m_Size: {x: 0.64064705, y: 2.1251736}
+  m_Offset: {x: -0.045766234, y: 0.05181767}
+  m_Size: {x: 1.0057824, y: 2.1251736}
   m_Direction: 0
 --- !u!114 &5367096759120484468
 MonoBehaviour:
@@ -195,12 +195,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoint: 20
   attackPoint: 5
-  attackTarget: {fileID: 0}
+  attackTarget: {fileID: 1838838390762422313, guid: 12ad61191aaa7d34bb3b9d5efe67a1c0, type: 3}
   moveSpeed: 2.5
-  graphic: {fileID: 4097715868710508063}
-  bulletPrefab: {fileID: 1313972198665738036, guid: 5b041ea2699989b43b493fa285d80b17, type: 3}
-  bulletSpeed: 2
   attackMinDistance: 10
   attackMaxDistance: 5
   attackTimeMax: 2
-  shootOffset: {x: 1.2, y: -0.6, z: 0}
+  shootOffset: {x: 1.2, y: 0, z: 0}
+  graphic: {fileID: 4097715868710508063}
+  bulletPrefab: {fileID: 1313972198665738036, guid: 5b041ea2699989b43b493fa285d80b17, type: 3}
+  bulletSpeed: 2

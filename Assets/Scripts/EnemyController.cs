@@ -42,23 +42,25 @@ public class EnemyController : MonoBehaviour
     }
     void Die()
     {
+        
         Destroy(gameObject);
     }
     public float GetAttackDamage()
     {
         return attackPoint;
     }
-    public void OnTriggerEter2D(Collider2D collision) 
+    void OnTriggerEnter2D(Collider2D collision) 
     {
-        if(collision.CompareTag("Bullet")) // Cek collider yang dimasuki adalah peluru
+        if (collision.CompareTag("Bullet")) // Cek apakah yang terkena adalah peluru
         {
             Bullet bullet = collision.GetComponent<Bullet>();
-            if(bullet.targetTag == "Enemy")
+            if (bullet != null && bullet.targetTag == "Enemy")
             {
                 float damage = bullet.GetDamage();
                 DamagedBy(damage);
-                Destroy(collision.gameObject);
+                Destroy(collision.gameObject); // Hancurkan peluru setelah terkena
             }
         }
     }
+
 }
