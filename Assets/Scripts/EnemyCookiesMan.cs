@@ -9,6 +9,10 @@ public class EnemyCookiesMan : EnemyController
     [SerializeField] private float attackMaxDistance;
     [SerializeField] private float attackTimeMax;
     [SerializeField] private Vector3 shootOffset;
+    // [SerializeField] private float jumpForce = 6.0f;
+    // [SerializeField] private float verticalJumpThreshold = 1.5f;
+    private bool isGrounded = false;
+
     private float attackTime = 0;
     
     [Header("Graphics and Shooting")]
@@ -71,12 +75,20 @@ public class EnemyCookiesMan : EnemyController
     {
         if (distance <= attackMaxDistance)
         {
-            rb.velocity = Vector2.zero;
+            rb.velocity = new Vector2(0, rb.velocity.y);
         }
         else
         {
             Vector2 direction = (attackTarget.position - transform.position).normalized;
-            rb.velocity = direction * moveSpeed;
+            rb.velocity = new Vector2(direction.x * moveSpeed, rb.velocity.y);
+
+            //float verticalDifference = attackTarget.position.y - transform.position.y;
+
+            // if(isGrounded && verticalDifference > verticalJumpThreshold)
+            // {
+            //     rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            //     isGrounded = false;
+            // }
         }
     }
 
@@ -98,13 +110,15 @@ public class EnemyCookiesMan : EnemyController
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+            //isGrounded = true;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            //isGrounded = true;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }

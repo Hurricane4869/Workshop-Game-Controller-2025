@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     public float healthMax { private set; get; }
 
-    private bool isGrounded;
+    //private bool isGrounded;
     private bool isShooting = true;
 
     [Header("Configuration")]
@@ -91,7 +91,7 @@ private void Jump()
     {
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Enemy")) // Pastikan objek bertagar "Ground"
         {
-            isGrounded = true;
+            //isGrounded = true;
             jumpCount = 2; // Reset kesempatan lompat saat menyentuh tanah
         }
         if (collision.gameObject.tag == "Enemy")
@@ -105,7 +105,7 @@ private void Jump()
     {
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Enemy"))
         {
-            isGrounded = false;
+            //isGrounded = false;
         }
     }
 
