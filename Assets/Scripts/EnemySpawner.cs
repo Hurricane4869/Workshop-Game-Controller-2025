@@ -27,6 +27,8 @@ public class EnemySpawner : MonoBehaviour
             Debug.LogWarning("Tidak ditemukan GameObject dengan tag 'Spawner' dalam scene!");
             return;
         }
+
+        SpawnEnemy();
     }
 
     void Update() 
@@ -45,6 +47,6 @@ public class EnemySpawner : MonoBehaviour
         
         int index = UnityEngine.Random.Range(0, spawnPoints.Count);
         Vector3 spawnPos = spawnPoints[index].position;
-        GameObject cookiesMan = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);        
+        Instantiate(enemyPrefab, spawnPos, Quaternion.identity);        
     }
 }
