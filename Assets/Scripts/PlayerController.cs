@@ -111,7 +111,7 @@ private void Jump()
 
     void ShootController()
     {
-        isShooting = Input.GetButton("Fire1") || Input.GetAxis("Fire1") > 0.5f;
+        isShooting = Input.GetButton("Fire1") || Input.GetAxis("Fire1") > 0.1f;
 
         if (isShooting)
         {

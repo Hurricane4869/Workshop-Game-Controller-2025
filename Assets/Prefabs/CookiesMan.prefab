@@ -456,8 +456,8 @@ MonoBehaviour:
   enemy: {fileID: 7158066756857785075}
   initialHealth: 20
   moveSpeed: 2.5
-  attackMinDistance: 10
-  attackMaxDistance: 5
+  attackMinDistance: 15
+  attackMaxDistance: 7.5
   attackTimeMax: 2
   shootOffset: {x: 1.2, y: 0, z: 0}
   graphic: {fileID: 4097715868710508063}
