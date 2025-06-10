@@ -820,7 +820,7 @@ MonoBehaviour:
   playerHealthBar: {fileID: 1953609489}
   playerHealthBarFullX: 492
   gameOverUI: {fileID: 133988400}
-  player: {fileID: 1168220616}
+  player: {fileID: 0}
 --- !u!114 &679635707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1293,25 +1293,21 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7731392916249371434, guid: 12ad61191aaa7d34bb3b9d5efe67a1c0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6108050817688587681, guid: 12ad61191aaa7d34bb3b9d5efe67a1c0, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1168220621}
+    - targetCorrespondingSourceObject: {fileID: 6108050817688587681, guid: 12ad61191aaa7d34bb3b9d5efe67a1c0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1168220622}
+    - targetCorrespondingSourceObject: {fileID: 6108050817688587681, guid: 12ad61191aaa7d34bb3b9d5efe67a1c0, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1168220620}
   m_SourcePrefab: {fileID: 100100000, guid: 12ad61191aaa7d34bb3b9d5efe67a1c0, type: 3}
---- !u!114 &1168220616 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7731392916249371434, guid: 12ad61191aaa7d34bb3b9d5efe67a1c0, type: 3}
-  m_PrefabInstance: {fileID: 1168220615}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1168220619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68b1b023b3cd1ad4e8a6181daa72be89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1168220617 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8103200365279568434, guid: 12ad61191aaa7d34bb3b9d5efe67a1c0, type: 3}
@@ -1340,6 +1336,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stunDuration: 0.2
+--- !u!114 &1168220621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168220619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4e9a0f141762a64b8d590734845935d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graphic: {fileID: 1168220617}
+  health: 100
+  attack: 5
+  canBeMoved: 1
+  moveSpeed: 2.5
+  jumpForce: 5
+  shootingTimeMax: 1
+  jumpCount: 2
+  bulletPrefab: {fileID: 1313972198665738036, guid: ce16f8ea65d16cb488e80508d3324f53, type: 3}
+  bulletSpeed: 10
+  gunOffset: {x: 0, y: 0}
+  imu: {fileID: 0}
+--- !u!114 &1168220622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168220619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0daf2e67907afeb46b92077a19184894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portName: COM11
+  baudRate: 115200
+  pitch: 0
+  roll: 0
+  yaw: 0
 --- !u!1 &1211909138
 GameObject:
   m_ObjectHideFlags: 0
