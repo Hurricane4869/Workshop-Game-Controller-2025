@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject gameOverUI;
 
-    public PlayerController player;
+    public PlayerControllerIMU player;
 
     void Update()
     {

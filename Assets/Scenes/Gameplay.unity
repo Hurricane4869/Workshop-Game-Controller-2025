@@ -820,7 +820,7 @@ MonoBehaviour:
   playerHealthBar: {fileID: 1953609489}
   playerHealthBarFullX: 492
   gameOverUI: {fileID: 133988400}
-  player: {fileID: 0}
+  player: {fileID: 1168220621}
 --- !u!114 &679635707
 MonoBehaviour:
   m_ObjectHideFlags: 0

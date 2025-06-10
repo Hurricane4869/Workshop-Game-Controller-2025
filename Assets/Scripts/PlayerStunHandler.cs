@@ -7,11 +7,11 @@ public class PlayerStunHandler : MonoBehaviour
     [SerializeField] private float stunDuration = 0.5f; // Durasi stun dalam detik
     private bool isStunned = false;
 
-    private PlayerController playerController;
+    private PlayerControllerIMU playerController;
 
     void Start()
     {
-        playerController = GetComponent<PlayerController>();
+        playerController = GetComponent<PlayerControllerIMU>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
